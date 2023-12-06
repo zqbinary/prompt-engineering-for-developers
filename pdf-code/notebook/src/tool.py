@@ -32,5 +32,5 @@ def get_completion(prompt):
 
     return answer
 
-
-print(get_completion("hello 你好"))
+# for test
+# print(get_completion("hello 你好"))

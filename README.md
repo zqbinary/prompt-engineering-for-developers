@@ -1,14 +1,38 @@
-![figures/readme.png](https://github.com/datawhalechina/prompt-engineering-for-developers/blob/main/figures/readme2.png)
-
 # 面向开发者的 LLM 入门课程
 
 ## 项目简介
-在原项目的基础上，不用原来的openid ,用智谱ai做。
+在原项目的基础上，不用原来的openid ,用智谱ai做。openapi我不知道什么时候用超了。[智谱ai](https://open.bigmodel.cn/)是清华团队的，还不错。
+为此我改了pdf-code/notebook/C1 Prompt Engineering for Developer/tool.py 中的函数
+```python
+def get_completion(prompt):
+    messages = [{"role": "user", "content": prompt}]
+    response = zhipuai.model_api.sse_invoke(
+        model="chatglm_turbo",
+        prompt=messages,
+        temperature=0,
+        top_p=0.7,
+        incremental=True
+    )
+```
 
-启动
-jupyter notebook
-例如第一个例子 
+## 启动
+安装
+
+`pip install -r .\requirements.txt`
+
+配置
+.env.example 复制到 .env 配置智谱api
+
+
+启动 jupyter
+
+`jupyter notebook`
+
+然后就可以愉快的使用了，例如第一个例子 ：
+
 ![figures/readme.png](https://github.com/zqbinary/prompt-engineering-for-developers/blob/main/figures/docs/C0/hello101.png)
+# 原文（以下）
+---
 
 **在线阅读地址：[面向开发者的 LLM 入门课程-在线阅读](https://datawhalechina.github.io/prompt-engineering-for-developers/)**
 
