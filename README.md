@@ -7,7 +7,8 @@
 
 启动
 jupyter notebook
-
+例如第一个例子 
+![figures/readme.png](https://github.com/datawhalechina/prompt-engineering-for-developers/blob/main/figures/docs/C0/hello101.png)
 
 **在线阅读地址：[面向开发者的 LLM 入门课程-在线阅读](https://datawhalechina.github.io/prompt-engineering-for-developers/)**
 
