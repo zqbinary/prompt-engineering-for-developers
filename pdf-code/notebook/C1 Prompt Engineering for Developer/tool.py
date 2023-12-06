@@ -12,8 +12,6 @@ def get_completion(prompt):
         model="chatglm_turbo",
         prompt=messages,
         temperature=0,
-        top_p=0.7,
-        incremental=True
     )
 
     answer = ""
@@ -32,5 +30,5 @@ def get_completion(prompt):
 
     return answer
 
-
-print(get_completion("hello 你好"))
+# test
+# print(get_completion("hello 你好"))
