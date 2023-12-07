@@ -5,6 +5,8 @@ from dotenv import load_dotenv, find_dotenv
 load_dotenv()
 zhipuai.api_key = os.getenv("api_key")
 
+IS_STREAM = False
+
 
 def get_completion(prompt):
     messages = [{"role": "user", "content": prompt}]
@@ -17,16 +19,20 @@ def get_completion(prompt):
     answer = ""
     for event in response.events():
         if event.event == "add":
-            answer += event.data
-            # print(event.data, end="")
+            if IS_STREAM:
+                print(event.data, end="")
+            else:
+                answer += event.data
         elif event.event == "error" or event.event == "interrupted":
             print(event.data, end="")
         elif event.event == "finish":
-            # print(event.data)
-            # print(event.meta, end="")
-            answer += event.data
+            if IS_STREAM:
+                print(event.data, end="")
+            else:
+                answer += event.data
         else:
-            print(event.data, end="")
+            if IS_STREAM:
+                print(event.data, end="")
 
     return answer
 
