@@ -1,13 +1,19 @@
+import dotenv
 import openai
 import os
 from dotenv import load_dotenv, find_dotenv
-
 
 # 如果你设置的是全局的环境变量，这行代码则没有任何作用。
 _ = load_dotenv(find_dotenv())
 
 # 获取环境变量 OPENAI_API_KEY
-openai.api_key = os.environ['OPENAI_API_KEY']
+openai.api_key = os.getenv('open_key')
+
+openai.proxy = {
+    "http": "http://127.0.0.1:7890",
+    "https": "http://127.0.0.1:7890"
+}
+
 
 # 一个封装 OpenAI 接口的函数，参数为 Prompt，返回对应结果
 
@@ -54,3 +60,5 @@ def get_completion_from_messages(messages,
     )
 
     return response.choices[0].message["content"]
+
+
