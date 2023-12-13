@@ -15,6 +15,8 @@ def get_completion(prompt):
     )
 ```
 
+* 学到langchain的时候，买了套壳gpt, 配置和使用在llm.py中
+
 ## 启动
 安装
 
