@@ -62,3 +62,5 @@ def get_completion_from_messages(messages,
     return response.choices[0].message["content"]
 
 
+
+print(get_completion("1+1等于几"))

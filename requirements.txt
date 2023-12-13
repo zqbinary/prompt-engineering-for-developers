@@ -2,3 +2,4 @@ zhipuai
 python-dotenv
 jupyter
 openai==0.28
+langchain
