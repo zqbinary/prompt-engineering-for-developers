@@ -1,27 +1,44 @@
 import os
+import time
 
+import langchain
+import pandas as pd
 from dotenv import load_dotenv
-from langchain.chat_models import ChatOpenAI
-from langchain.prompts import ChatPromptTemplate
+
+langchain.debug = True
 from langchain.chains import LLMChain
+from langchain.chat_models import ChatOpenAI
+from langchain.document_loaders import PyPDFLoader
+from langchain.indexes import VectorstoreIndexCreator
+from langchain.prompts import ChatPromptTemplate
+from langchain.vectorstores import DocArrayInMemorySearch  # 向量存储
+from langchain_community.document_loaders import CSVLoader
 
 load_dotenv()
-api_key = os.getenv("open_key_f_1")
+
+# os.environ["OPENAI_API_TYPE"] = "azure"
+os.environ["OPENAI_API_BASE"] = os.getenv('api_base')
+os.environ["OPENAI_API_KEY"] = os.getenv("open_key_f_1")
+# os.environ["OPENAI_API_VERSION"] = "2023-05-15"
+os.environ["OPENAI_PROXY"] = os.getenv("api_proxy")
 
 
 def gen_chat(temperature=0.0):
-    global chat
-    chat = ChatOpenAI(
+    return ChatOpenAI(
         model_name="gpt-3.5-turbo",
-        openai_api_key=api_key,
+        openai_api_key=os.getenv("open_key_f_1"),
         openai_api_base=os.getenv('api_base'),
         openai_proxy="http://127.0.0.1:7890",
         temperature=temperature,
     )
-    return chat
 
 
-chat = gen_chat()
+from langchain_community.embeddings.openai import OpenAIEmbeddings
+
+
+def gen_emm_chat(temperature=0.0):
+    return OpenAIEmbeddings(
+    )
 
 
 def c21():
@@ -74,5 +91,21 @@ def c41():
     print(res)
 
 
+def c50():
+    file = './data/不锈钢推销.pdf'
+    loader = PyPDFLoader(file)
+    result = loader.load()
+    # print(result)
+    index = VectorstoreIndexCreator(vectorstore=result).from_loaders([loader])
+
+
+
+# failed
+
 if __name__ == '__main__':
-    c41()
+    try:
+        c41()
+
+    except Exception as e:
+        print(str(e))
+        # raise e

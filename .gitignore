@@ -136,3 +136,4 @@ dmypy.json
 .pyre/
 
 .idea
+pdf-code/notebook/src/data/

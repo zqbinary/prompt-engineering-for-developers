@@ -2,4 +2,8 @@ zhipuai
 python-dotenv
 jupyter
 openai==0.28
-langchain
+langchain[docarray]
+pypdf
+pandas
+tiktoken
+pydantic==1.10.9
