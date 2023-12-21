@@ -1,12 +1,15 @@
-import os
-from dotenv import load_dotenv
-import requests
 import json
+import os
+
+import requests
+from dotenv import load_dotenv
+
+
 # 套皮openai curl 方案
 
 def get_completion_(prompt):
     load_dotenv()
-    apiUrl = 'https://api.hdxia.com/v1/chat/completions'
+    apiUrl = 'https://api2.hdxia.com/v1/chat/completions'
     apiKey = os.getenv("open_key_f_1")
     temperature = 1.0
     max_tokens = 600
@@ -63,4 +66,5 @@ def get_completion_(prompt):
         print('Error:', e)
 
 
-print(get_completion_("1+1等于几"))
+if __name__ == '__main__':
+    print(get_completion_("1+1等于几"))

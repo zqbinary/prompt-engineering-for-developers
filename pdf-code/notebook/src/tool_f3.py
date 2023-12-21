@@ -1,16 +1,18 @@
 import os
+
 import openai as open_ai_origin
 from dotenv import load_dotenv
+
+load_dotenv()
+
+
 # 皮api
 
+
 def init_openai():
-    load_dotenv()
     open_ai_origin.api_key = os.getenv("open_key_f_1")
-    open_ai_origin.proxy = {
-        "http": "http://127.0.0.1:7890",
-        "https": "http://127.0.0.1:7890"
-    }
-    open_ai_origin.api_base = 'https://api.hdxia.com/v1'
+    open_ai_origin.proxy = "http://127.0.0.1:7890"
+    open_ai_origin.api_base = os.getenv("api_base")
     return open_ai_origin
 
 
@@ -26,4 +28,4 @@ def get_completion(prompt, model="gpt-3.5-turbo"):
 
 
 # test
-# print(get_completion("1+1是什么"))
+print(get_completion("1+1是什么"))
